@@ -12,7 +12,8 @@ public class GameGrid extends Observable{
 	public static final int OTHER = 2;
 	public static final int INROW = 5;	// Number of consecutive pieces in a row required to win.
 	private int[][] board;
-	
+	private int sideLength;	// Allowed?
+
 	/**
 	 * Constructor
 	 * 
@@ -21,6 +22,7 @@ public class GameGrid extends Observable{
 	public GameGrid(int size){
 		
 		board = new int[size][size];
+		this.sideLength = size;
 		
 		// Make all the squares on the board empty.
 		for (int i = 0; i < size; i++) {
@@ -48,7 +50,7 @@ public class GameGrid extends Observable{
 	 * @return the grid size
 	 */
 	public int getSize(){
-		return board.length * board[0].length;
+		return sideLength * sideLength;
 	}
 	
 	/**
@@ -59,12 +61,30 @@ public class GameGrid extends Observable{
 	 * @param player
 	 * @return true if the insertion worked, false otherwise
 	 */
-	public boolean move(int x, int y, int player){}
+	public boolean move(int x, int y, int player){
+		if (board[x][y] == EMPTY) {
+			board[x][y] = player;
+			setChanged();
+			notifyObservers();
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Clears the grid of pieces
 	 */
-	public void clearGrid(){}
+	public void clearGrid(){
+		for (int i = 0; i < sideLength; i++) {
+			for (int j = 0; i < sideLength; j++) {
+				board[i][j] = EMPTY;
+			}
+		}
+		
+		setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * Check if a player has 5 in row
@@ -72,7 +92,16 @@ public class GameGrid extends Observable{
 	 * @param player the player to check for
 	 * @return true if player has 5 in row, false otherwise
 	 */
-	public boolean isWinner(int player){}
+	public boolean isWinner(int player){
+		int playerPieces = 0;
+		for (int i = 0; i < this.getSize(); i++) {
+			for (int j = 0; i < this.getSize(); j++) {
+				if (board[i][j] == player) {
+					playerPieces++;
+				}
+			}
+		}
+	}
 	
 	
 }
