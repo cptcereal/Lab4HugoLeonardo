@@ -140,6 +140,7 @@ public class GameGrid extends Observable{
 									playerInRow++;
 								}
 							}
+							
 							if (playerInRow == 5) {
 								return true;
 							} else {
