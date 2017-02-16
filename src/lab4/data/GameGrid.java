@@ -110,10 +110,9 @@ public class GameGrid extends Observable{
 		if (playerPieces >= INROW) {
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-					
+					// Check if INROW horizontally from the position the players piece was found.
 					if (board[i][j] == player) {
-						
-						// Check if INROW horizontally from the position the players piece was found.
+	
 						if (INROW <= sideLength - (j + 1)) {
 							IRHorizontally++;
 							for (int k = j + 1; k < j + INROW; k++) {
@@ -131,20 +130,7 @@ public class GameGrid extends Observable{
 				}
 			}
 			
-			for (int i = 0; i < sideLength; i++ ) {
-				for (int j = 0; j < sideLength; j++) {
-					
-					if (board[j][i] == player) {
-						IRVertically++;
-					}
-				}
-				
-				if (IRVertically == 5) {
-					return true;
-				} else {
-					IRVertically = 0;
-				}
-			}
+
 		}
 	}
 	
