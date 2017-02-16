@@ -3,7 +3,7 @@ package lab4.data;
 import java.util.Observable;
 
 /**
- * TEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTTTTTTTT
+ *
  * Represents the 2-d game grid
  */
 
@@ -95,9 +95,7 @@ public class GameGrid extends Observable{
 	 */
 	public boolean isWinner(int player){
 		int playerPieces = 0;
-		int IRVertically = 0;
-		int IRHorizontally = 0;
-		int IRDiagonally = 0;
+		int playerInRow = 0;
 		
 		for (int i = 0; i < sideLength; i++) {
 			for (int j = 0; i < sideLength; j++) {
@@ -108,31 +106,50 @@ public class GameGrid extends Observable{
 		}
 		
 		if (playerPieces >= INROW) {
+			// Check if player has INROW horizontally.
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-					// Check if INROW horizontally from the position the players piece was found.
+					
 					if (board[i][j] == player) {
-	
 						if (INROW <= sideLength - (j + 1)) {
-							IRHorizontally++;
+							playerInRow++;
 							for (int k = j + 1; k < j + INROW; k++) {
 								if (board[i][k] == player) {
-									IRHorizontally++;
+									playerInRow++;
 								}
 							}
-							if (IRHorizontally == 5) {
+							if (playerInRow == 5) {
 								return true;
 							} else {
-								IRHorizontally = 0;
+								playerInRow = 0;
 							}
 						}
 					}
 				}
 			}
 			
+			// Check if player has INROW vertically.
+			for (int i = 0; i < sideLength; i++ ) {
+				for (int j = 0; j < sideLength; j++) {
+					
+					if (board[j][i] == player) {
+						if (INROW <= sideLength - (j + 1)) {
+							playerInRow++;
+							for (int k = j + 1; k < j + INROW; k++) {
+								if (board[k][i] == player) {
+									playerInRow++;
+								}
+							}
+							if (playerInRow == 5) {
+								return true;
+							} else {
+								playerInRow = 0;
+							}
+						}
+					}
+				}
+			}
 
 		}
 	}
-	
-	
 }
