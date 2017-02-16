@@ -112,7 +112,7 @@ public class GameGrid extends Observable{
 				for (int j = 0; j < sideLength; j++) {
 					
 					if (board[i][j] == player) {
-						
+						// Check if INROW horizontally from the position the players piece was found.
 						if (INROW <= sideLength - (j + 1)) {
 							IRHorizontally++;
 							for (int k = j + 1; k < j + INROW; k++) {
