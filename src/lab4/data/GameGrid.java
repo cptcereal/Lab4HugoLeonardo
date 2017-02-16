@@ -95,10 +95,27 @@ public class GameGrid extends Observable{
 	 */
 	public boolean isWinner(int player){
 		int playerPieces = 0;
-		for (int i = 0; i < this.getSize(); i++) {
-			for (int j = 0; i < this.getSize(); j++) {
+		int IRVertically = 0;
+		int IRHorizontally = 0;
+		int IRDiagonally = 0;
+		
+		for (int i = 0; i < sideLength; i++) {
+			for (int j = 0; i < sideLength; j++) {
 				if (board[i][j] == player) {
 					playerPieces++;
+				}
+			}
+		}
+		
+		if (playerPieces >= INROW) {
+			for (int i = 0; i < sideLength; i++ ) {
+				for (int j = 0; j < sideLength; j++) {
+					
+					if (board[i][j] == player) {
+						for (int k = j; k < sideLength - j; k++) {
+							
+						}
+					}
 				}
 			}
 		}
