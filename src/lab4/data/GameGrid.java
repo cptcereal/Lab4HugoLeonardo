@@ -115,8 +115,15 @@ public class GameGrid extends Observable{
 						
 						//	Check horizontal
 						if (INROW <= sideLength - (j + 1)) {
-							for (int k = j; k < sideLength; k++) {
-								
+							for (int k = j + 1; k < sideLength; k++) {
+								if (board[i][k] == player) {
+									IRHorizontally++;
+								}
+							}
+							if (IRHorizontally == INROW) {
+								return true;
+							} else {
+								IRHorizontally = 0;
 							}
 						}
 					}
