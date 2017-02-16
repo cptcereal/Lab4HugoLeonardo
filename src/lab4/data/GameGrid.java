@@ -7,7 +7,7 @@ import java.util.Observable;
  * Represents the 2-d game grid
  */
 
-public class GameGrid extends Observable{
+public class GameGrid extends Observable {
 	public static final int EMPTY = 0;
 	public static final int ME = 1;
 	public static final int OTHER = 2;
@@ -20,7 +20,7 @@ public class GameGrid extends Observable{
 	 * 
 	 * @param size The width/height of the game grid
 	 */
-	public GameGrid(int size){
+	public GameGrid(int size) {
 		
 		board = new int[size][size];
 		this.sideLength = size;
@@ -41,7 +41,7 @@ public class GameGrid extends Observable{
 	 * @param y The y coordinate
 	 * @return the value of the specified location
 	 */
-	public int getLocation(int x, int y){
+	public int getLocation(int x, int y) {
 		return board[x][y];
 	}
 	
@@ -50,7 +50,7 @@ public class GameGrid extends Observable{
 	 * 
 	 * @return the grid size
 	 */
-	public int getSize(){
+	public int getSize() {
 		return sideLength * sideLength;
 	}
 	
@@ -62,7 +62,7 @@ public class GameGrid extends Observable{
 	 * @param player
 	 * @return true if the insertion worked, false otherwise
 	 */
-	public boolean move(int x, int y, int player){
+	public boolean move(int x, int y, int player) {
 		if (board[x][y] == EMPTY) {
 			board[x][y] = player;
 			setChanged();
@@ -76,7 +76,7 @@ public class GameGrid extends Observable{
 	/**
 	 * Clears the grid of pieces
 	 */
-	public void clearGrid(){
+	public void clearGrid() {
 		for (int i = 0; i < sideLength; i++) {
 			for (int j = 0; i < sideLength; j++) {
 				board[i][j] = EMPTY;
@@ -93,7 +93,7 @@ public class GameGrid extends Observable{
 	 * @param player the player to check for
 	 * @return true if player has 5 in row, false otherwise
 	 */
-	public boolean isWinner(int player){
+	public boolean isWinner(int player) {
 		int playerPieces = 0;
 		int playerInRow = 0;
 		
@@ -105,8 +105,46 @@ public class GameGrid extends Observable{
 			}
 		}
 		
+		
+		//Checks if player has INROW Horizontally 
 		if (playerPieces >= INROW) {
-			
+			for (int i = 0; i < sideLength; i++ ) {
+				for (int j = 0; j < sideLength; j++) {
+						board[i][j]= player;
+						if (board[i][j] == player && board[i][j] != EMPTY) {
+							playerInRow++;
+							if (playerInRow == 5) {
+								playerInRow = 0;
+							}
+						} else {
+							playerInRow = 0;
+						}
+
+				}
+			}
+		}
+		
+		
+		//Checks if player has INROW Vertically
+		if (playerPieces >= INROW) {
+			for (int i = 0; i < sideLength; i++ ) {
+				for (int j = 0; j < sideLength; j++) {
+						board[j][i]= player;
+						if (board[j][i] == player && board[j][i] != EMPTY) {
+							playerInRow++;
+							if (playerInRow == 5) {
+								playerInRow = 0;
+							}
+						} else {
+							playerInRow = 0;
+						}
+
+				}
+			}
+		}
+		
+		
+		/*if (playerPieces >= INROW) {
 			// Check if player has INROW horizontally.
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
@@ -128,7 +166,7 @@ public class GameGrid extends Observable{
 					}
 				}
 			}
-			
+		
 			// Check if player has INROW vertically.
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
@@ -150,10 +188,6 @@ public class GameGrid extends Observable{
 						}
 					}
 				}
-			}
-			
-			// Check if player has INROW diagonally.
-
-		}
+			}*/
 	}
 }
