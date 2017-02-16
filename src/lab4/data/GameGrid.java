@@ -151,6 +151,8 @@ public class GameGrid extends Observable{
 					}
 				}
 			}
+			
+			// Check if player has INROW diagonally.
 
 		}
 	}
