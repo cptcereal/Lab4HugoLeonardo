@@ -106,6 +106,7 @@ public class GameGrid extends Observable{
 		}
 		
 		if (playerPieces >= INROW) {
+			
 			// Check if player has INROW horizontally.
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
