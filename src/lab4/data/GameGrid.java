@@ -115,10 +115,26 @@ public class GameGrid extends Observable{
 						IRHorizontally++;
 					}
 				}
+				
 				if (IRHorizontally == 5) {
 					return true;
 				} else {
 					IRHorizontally = 0;
+				}
+			}
+			
+			for (int i = 0; i < sideLength; i++ ) {
+				for (int j = 0; j < sideLength; j++) {
+					
+					if (board[j][i] == player) {
+						IRVertically++;
+					}
+				}
+				
+				if (IRVertically == 5) {
+					return true;
+				} else {
+					IRVertically = 0;
 				}
 			}
 		}
