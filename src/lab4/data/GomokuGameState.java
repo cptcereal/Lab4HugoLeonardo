@@ -7,12 +7,14 @@ import java.util.Observable;
 import java.util.Observer;
 
 import lab4.client.GomokuClient;
+import sun.security.mscapi.KeyStore.MY;
 
 /**
  * Represents the state of a game
  */
 
 public class GomokuGameState extends Observable implements Observer{
+	
 
    // Game variables
 	private final int DEFAULT_SIZE = 15;
@@ -25,6 +27,10 @@ public class GomokuGameState extends Observable implements Observer{
 	private GomokuClient client;
 	
 	private String message;
+	
+	private int final MY_TURN = 1;
+	private int final OTHERS_TURN = 2; 
+	private int final FINISHED = 3; 
 	
 	/**
 	 * The constructor
@@ -53,14 +59,19 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @return the game grid
 	 */
 	public GameGrid getGameGrid(){}
-
+		
 	/**
 	 * This player makes a move at a specified location
 	 * 
 	 * @param x the x coordinate
 	 * @param y the y coordinate
 	 */
-	public void move(int x, int y){}
+	public void move(int x, int y){
+		if(currentState == MY_TURN){
+			gameGrid.move();
+		}
+		
+	}
 	
 	/**
 	 * Starts a new game with the current client
