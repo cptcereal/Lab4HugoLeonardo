@@ -10,7 +10,7 @@ import lab4.client.GomokuClient;
 import sun.security.mscapi.KeyStore.MY;
 
 /**
- * Represents the state of a game
+ * Represents the state of a game test
  */
 
 public class GomokuGameState extends Observable implements Observer{
