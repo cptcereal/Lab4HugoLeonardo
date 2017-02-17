@@ -102,7 +102,7 @@ public class GameGrid extends Observable {
 				if (board[i][j] == player) {
 					playerPieces++;
 				}
-			}
+			} 
 		}
 		
 		
