@@ -110,15 +110,14 @@ public class GameGrid extends Observable {
 		if (playerPieces >= INROW) {
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-						if (board[i][j] == player) {
-							playerInRow++;
-							if (playerInRow == 5) {
-								return true;
-							}
-						} else {
-							playerInRow = 0;
+					if (board[i][j] == player) {
+						playerInRow++;
+						if (playerInRow == INROW) {
+							return true;
 						}
-
+					} else {
+						playerInRow = 0;
+					}
 				}
 			}
 		}
@@ -128,64 +127,80 @@ public class GameGrid extends Observable {
 		if (playerPieces >= INROW) {
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-						if (board[j][i] == player &&) {
-							playerInRow++;
-							if (playerInRow == 5) {
-								return true;
-							}
-						} else {
-							playerInRow = 0;
+					if (board[j][i] == player) {
+						playerInRow++;
+						if (playerInRow == INROW) {
+							return true;
 						}
-
+					} else {
+						playerInRow = 0;
+					}
 				}
 			}
 		}
 		
 		
-		/*if (playerPieces >= INROW) {
-			// Check if player has INROW horizontally.
+		
+		
+		//Checks if player has INROW Diagonally to the right
+		if (playerPieces >= INROW) {
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-					
 					if (board[i][j] == player) {
-						if (INROW <= sideLength - (j + 1)) {
-							playerInRow++;
-							for (int k = j + 1; k < j + INROW; k++) {
-								if (board[i][k] == player) {
-									playerInRow++;
+						playerInRow++;
+						int l = i;
+						for(int k = j+1; k< sideLength; k++){
+							l++;
+							if(l<= sideLength){
+								playerInRow++;
+								if(board[l][k]== player){
+									if (playerInRow == INROW) {
+										return true;
+									}	
+								}else{
+									playerInRow=0;
+									break;
 								}
 							}
-							if (playerInRow == 5) {
-								return true;
-							} else {
-								playerInRow = 0;
-							}
 						}
+					
+					} else {
+						playerInRow = 0;
 					}
 				}
 			}
+		}
 		
-			// Check if player has INROW vertically.
+		
+		
+		//Checks if player has INROW Diagonally to the left
+		if (playerPieces >= INROW) {
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-					
-					if (board[j][i] == player) {
-						if (INROW <= sideLength - (j + 1)) {
-							playerInRow++;
-							for (int k = j + 1; k < j + INROW; k++) {
-								if (board[k][i] == player) {
-									playerInRow++;
+					if (board[i][j] == player) {
+						playerInRow++;
+						int l = i;
+						for(int k = j-1; k>=0; k--){
+							l++;
+							if(l>=0){
+								playerInRow++;
+								if(board[l][k]== player){
+									if (playerInRow == INROW) {
+										return true;
+									}	
+								}else{
+									playerInRow=0;
+									break;
 								}
 							}
-							
-							if (playerInRow == 5) {
-								return true;
-							} else {
-								playerInRow = 0;
-							}
 						}
+					
+					} else {
+						playerInRow = 0;
 					}
 				}
-			}*/
+			}
+		}
+		return false;
 	}
 }
