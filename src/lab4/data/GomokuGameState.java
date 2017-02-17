@@ -8,7 +8,6 @@ import java.util.Observer;
 
 import lab4.client.GomokuClient;
 import sun.security.mscapi.KeyStore.MY;
-
 /**
  * Represents the state of a game
  */
@@ -68,7 +67,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void move(int x, int y){
 		if(currentState == MY_TURN){
-			gameGrid.move();
+			gameGrid.move(x,y,MY_TURN);
 		}
 		
 	}
