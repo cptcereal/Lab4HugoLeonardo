@@ -28,9 +28,9 @@ public class GomokuGameState extends Observable implements Observer{
 	
 	private String message;
 	
-	private int final MY_TURN = 1;
-	private int final OTHERS_TURN = 2; 
-	private int final FINISHED = 3; 
+	private final int MY_TURN = 1;
+	private final int OTHERS_TURN = 2; 
+	private final int FINISHED = 3; 
 	
 	/**
 	 * The constructor
@@ -112,7 +112,7 @@ public class GomokuGameState extends Observable implements Observer{
 			break;
 		case GomokuClient.SERVER:
 			message = "Game started, waiting for other player...";
-			currentState = OTHER_TURN;
+			currentState = OTHERS_TURN;
 			break;
 		}
 		setChanged();
