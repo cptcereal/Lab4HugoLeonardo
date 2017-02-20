@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Observer{
 	}
 	
 	public void paintComponent(Graphics g){
-		super.paintComponent(g);
+		super.paintComponent(g);	
 		
 	}
 	

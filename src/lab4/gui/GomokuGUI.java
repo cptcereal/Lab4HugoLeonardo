@@ -3,6 +3,10 @@ package lab4.gui;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import lab4.client.GomokuClient;
 import lab4.data.GameGrid;
 import lab4.data.GomokuGameState;
@@ -15,6 +19,10 @@ public class GomokuGUI implements Observer{
 
 	private GomokuClient client;
 	private GomokuGameState gamestate;
+	private JPanel GamePanel;
+	private JPanel gameGridPanel;
+	private JLabel messageLabel;
+	private JButton connectButton, newGameButton, disconnectButton;
 	
 	/**
 	 * The constructor
