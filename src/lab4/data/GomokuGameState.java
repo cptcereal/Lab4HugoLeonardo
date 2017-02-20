@@ -28,7 +28,7 @@ public class GomokuGameState extends Observable implements Observer{
 	private String message;
 	
 	private final int MY_TURN = 1;
-	private final int OTHERS_TURN = 2; 
+	private final int OTHERS_TURN = 2;
 	private final int FINISHED = 3; 
 	
 	/**
