@@ -47,6 +47,7 @@ public class GomokuGUI implements Observer{
 				// The coordinates where the player clicked.
 				int xGrid = e.getX();
 				int yGrid = e.getY();
+				
 				int[] xyArray = gameGridPanel.getGridPosition(xGrid, yGrid);
 				g.move(xyArray[0], xyArray[1]);
 			}
