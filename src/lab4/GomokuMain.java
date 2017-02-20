@@ -1,6 +1,7 @@
 package lab4;
 
 import lab4.client.*;
+import lab4.data.GomokuGameState;
 import lab4.gui.*;
 
 

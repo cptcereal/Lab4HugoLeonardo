@@ -1,5 +1,7 @@
 package lab4.gui;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,7 +22,7 @@ public class GomokuGUI implements Observer{
 	private GomokuClient client;
 	private GomokuGameState gamestate;
 	private JPanel GamePanel;
-	private JPanel gameGridPanel;
+	private GamePanel gameGridPanel;
 	private JLabel messageLabel;
 	private JButton connectButton, newGameButton, disconnectButton;
 	
@@ -35,7 +37,20 @@ public class GomokuGUI implements Observer{
 		this.gamestate = g;
 		client.addObserver(this);
 		gamestate.addObserver(this);
+		GamePanel = new JPanel();
+		gameGridPanel = new GamePanel(gamestate.getGameGrid());
 		
+		gameGridPanel.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				// The coordinates where the player clicked.
+				int xGrid = e.getX();
+				int yGrid = e.getY();
+				int[] xyArray = gameGridPanel.getGridPosition(xGrid, yGrid);
+				g.move(xyArray[0], xyArray[1]);
+			}
+		});
 		
 	}
 	
