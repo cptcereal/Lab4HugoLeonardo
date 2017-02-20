@@ -2,8 +2,6 @@
  * Created on 2007 feb 8
  */
 package lab4.data;
-
-import java.awt.SecondaryLoop;
 import java.util.Observable;
 import java.util.Observer;
 
