@@ -9,7 +9,7 @@ import java.util.Observer;
 import lab4.client.GomokuClient;
 
 /**
- * Represents the state of a game test
+ * Represents the state of a game test test
  */
 
 public class GomokuGameState extends Observable implements Observer{
