@@ -1,7 +1,6 @@
 package lab4.gui;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -16,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import lab4.client.GomokuClient;
-import lab4.data.GameGrid;
 import lab4.data.GomokuGameState;
 
 /*
@@ -46,6 +44,7 @@ public class GomokuGUI implements Observer{
 		
 		frame = new JFrame("Gomoku");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setPreferredSize(new Dimension(375, 450));
 		
 		JPanel panel = new JPanel();	// The background that i can use spring layout on.
 		gameGridPanel = new GamePanel(gamestate.getGameGrid());
@@ -94,17 +93,23 @@ public class GomokuGUI implements Observer{
 		
 		SpringLayout layout = new SpringLayout();
 		panel.setLayout(layout);
-		layout.putConstraint(SpringLayout.WEST, gameGridPanel, 5, SpringLayout.EAST, panel);
+		
+		// Constrains to fix the layout of the game.
+		layout.putConstraint(SpringLayout.WEST, gameGridPanel, 5, SpringLayout.WEST, frame);
+		layout.putConstraint(SpringLayout.NORTH, gameGridPanel, 5, SpringLayout.NORTH, frame);
 		
 		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gameGridPanel);
+		layout.putConstraint(SpringLayout.WEST, connectButton, 5, SpringLayout.WEST, frame);
+		
 		layout.putConstraint(SpringLayout.NORTH, newGameButton, 10, SpringLayout.SOUTH, gameGridPanel);
+		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, connectButton);
+		
 		layout.putConstraint(SpringLayout.NORTH, disconnectButton, 10, SpringLayout.SOUTH, gameGridPanel);
-		
-		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, gameGridPanel);
 		layout.putConstraint(SpringLayout.WEST, disconnectButton, 10, SpringLayout.EAST, newGameButton);
-		
+	
+		layout.putConstraint(SpringLayout.WEST, messageLabel, 5, SpringLayout.WEST, frame);
 		layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, connectButton);
-
+		
 		frame.pack();
 		frame.setVisible(true);
 	}

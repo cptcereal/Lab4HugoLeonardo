@@ -6,7 +6,7 @@ import lab4.gui.*;
 
 
 public class GomokuMain {
-	private static int port = 4500;
+	private static int port = 7600;
 
 	public static void main(String[] args) {
 		if (args.length == 1) {
@@ -15,10 +15,9 @@ public class GomokuMain {
 			if (tempPort > 0) {	// A port number needs to be a positive integer.
 				port = tempPort;
 			}
-		
+		}
 		GomokuClient client = new GomokuClient(port);
 		GomokuGameState gameState = new GomokuGameState(client);
 		GomokuGUI GUI = new GomokuGUI(gameState, client);
-		}
 	}
 }

@@ -77,7 +77,7 @@ public class GameGrid extends Observable {
 	 */
 	public void clearGrid() {
 		for (int i = 0; i < sideLength; i++) {
-			for (int j = 0; i < sideLength; j++) {
+			for (int j = 0; j < sideLength; j++) {
 				board[i][j] = EMPTY;
 			}
 		}
@@ -97,7 +97,7 @@ public class GameGrid extends Observable {
 		int playerInRow = 0;
 		
 		for (int i = 0; i < sideLength; i++) {
-			for (int j = 0; i < sideLength; j++) {
+			for (int j = 0; j < sideLength; j++) {
 				if (board[i][j] == player) {
 					playerPieces++;
 				}

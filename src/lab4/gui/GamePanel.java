@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements Observer{
 	 * @param y the y coordinates
 	 * @return an integer array containing the [x, y] grid position
 	 */
-	public int[] getGridPosition(int x, int y){
+	public int[] getGridPosition(int x, int y) {
 		return new int[] {x / UNIT_SIZE, y / UNIT_SIZE}; 
 	}
 	
@@ -49,18 +49,19 @@ public class GamePanel extends JPanel implements Observer{
 		this.repaint();
 	}
 	
-	public void paintComponent(Graphics g){
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for(int i = 0; i < grid.getSize(); i++){
-			for(int j=0; j< grid.getSize(); j++){
+		for(int i = 0; i < grid.getSize(); i++) {
+			for(int j=0; j< grid.getSize(); j++) {
 				g.setColor(Color.white);
 				g.fillRect(j*UNIT_SIZE, i*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
 				g.setColor(Color.black);
-				g.drawRect((j*UNIT_SIZE), (i*UNIT_SIZE), (UNIT_SIZE), UNIT_SIZE);
-				if(grid.getLocation(i,j) == grid.ME){
+				g.drawRect(j*UNIT_SIZE, i*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
+				
+				if(grid.getLocation(i,j) == GameGrid.ME) {
 					g.setColor(Color.black);
 					g.fillOval(j*UNIT_SIZE, i*UNIT_SIZE, (UNIT_SIZE - 5), (UNIT_SIZE - 5));
-				}else if(grid.getLocation(i,j) == grid.OTHER){
+				}else if (grid.getLocation(i,j) == GameGrid.OTHER) {
 					g.setColor(Color.black);
 					g.drawOval(j*UNIT_SIZE, i*UNIT_SIZE, (UNIT_SIZE - 5), (UNIT_SIZE - 5));
 				}
