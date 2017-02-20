@@ -69,7 +69,18 @@ public class GomokuGameState extends Observable implements Observer{
 	 */
 	public void move(int x, int y){
 		if(currentState == MY_TURN){
-			gameGrid.move(x,y,MY_TURN);
+			if(gameGrid.move(x,y,MY_TURN)) {
+				client.sendMoveMessage(x, y);
+				if(gameGrid.isWinner(MY_TURN)) {
+					currentState = FINISHED;
+					setChanged();
+					notifyObservers();
+				}
+			} else {	// If the move can't be made because of not empty.
+				message = "The move can't me made.";
+				setChanged();
+				notifyObservers();
+			}
 		}
 		
 	}
