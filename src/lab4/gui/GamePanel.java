@@ -50,9 +50,6 @@ public class GamePanel extends JPanel implements Observer{
 	}
 	
 	public void paintComponent(Graphics g){
-<<<<<<< HEAD
-		super.paintComponent(g);	
-=======
 		super.paintComponent(g);
 		for(int i = 0; i < grid.getSize(); i++){
 			for(int j=0; j< grid.getSize(); j++){
@@ -69,9 +66,5 @@ public class GamePanel extends JPanel implements Observer{
 				}
 			}
 		}
-		
->>>>>>> branch 'master' of https://github.com/cptcereal/Lab4HugoLeonardo.git
-		
 	}
-	
 }
