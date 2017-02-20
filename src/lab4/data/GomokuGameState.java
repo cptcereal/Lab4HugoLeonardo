@@ -50,14 +50,16 @@ public class GomokuGameState extends Observable implements Observer{
 	 * 
 	 * @return the message string
 	 */
-	public String getMessageString(){}
+	public String getMessageString(){
+		return message;}
 	
 	/**
 	 * Returns the game grid
 	 * 
 	 * @return the game grid
 	 */
-	public GameGrid getGameGrid(){}
+	public GameGrid getGameGrid(){
+		return gameGrid;}
 		
 	/**
 	 * This player makes a move at a specified location
@@ -100,7 +102,9 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param x The x coordinate of the move
 	 * @param y The y coordinate of the move
 	 */
-	public void receivedMove(int x, int y){}
+	public void receivedMove(int x, int y){
+		
+	}
 	
 	public void update(Observable o, Object arg) {
 		
