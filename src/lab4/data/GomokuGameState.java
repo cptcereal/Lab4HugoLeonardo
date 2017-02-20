@@ -3,6 +3,7 @@
  */
 package lab4.data;
 
+import java.awt.SecondaryLoop;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -88,24 +89,50 @@ public class GomokuGameState extends Observable implements Observer{
 	/**
 	 * Starts a new game with the current client
 	 */
-	public void newGame(){}
+	public void newGame(){
+		gameGrid.clearGrid();
+		currentState = OTHERS_TURN;
+		message = "Other player's turn";
+		client.sendNewGameMessage();
+		setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * Other player has requested a new game, so the 
 	 * game state is changed accordingly
 	 */
-	public void receivedNewGame(){}
+	public void receivedNewGame(){
+		gameGrid.clearGrid();
+		currentState = MY_TURN;
+		message = "Your turn";
+		setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * The connection to the other player is lost, 
 	 * so the game is interrupted
 	 */
-	public void otherGuyLeft(){}
+	public void otherGuyLeft(){
+		gameGrid.clearGrid();
+		currentState= NOT_STARTED;
+		message = "Other player has left";
+		setChanged();
+		notifyObservers();
+	}
 	
 	/**
 	 * The player disconnects from the client
 	 */
-	public void disconnect(){}
+	public void disconnect(){
+		gameGrid.clearGrid();
+		currentState = NOT_STARTED;
+		message = "You have been disconnected";
+		setChanged();
+		notifyObservers();
+		client.disconnect();
+	}
 	
 	/**
 	 * The player receives a move from the other player
@@ -114,7 +141,17 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param y The y coordinate of the move
 	 */
 	public void receivedMove(int x, int y){
-		
+		gameGrid.move(x, y, OTHERS_TURN);
+		if(gameGrid.isWinner(OTHERS_TURN)){
+			currentState= FINISHED;
+			message = "Other player has won";
+			setChanged();
+			notifyObservers();
+		}else{
+			message = " Your turn";
+			setChanged();
+			notifyObservers();
+		}
 	}
 	
 	public void update(Observable o, Object arg) {
