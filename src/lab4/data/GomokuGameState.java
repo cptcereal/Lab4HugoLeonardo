@@ -7,7 +7,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import lab4.client.GomokuClient;
-import sun.security.mscapi.KeyStore.MY;
 
 /**
  * Represents the state of a game test
