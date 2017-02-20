@@ -1,5 +1,7 @@
 package lab4.gui;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -8,8 +10,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SpringLayout;
 
 import lab4.client.GomokuClient;
 import lab4.data.GameGrid;
@@ -23,7 +27,7 @@ public class GomokuGUI implements Observer{
 
 	private GomokuClient client;
 	private GomokuGameState gamestate;
-	private JPanel GamePanel;
+	private JFrame frame;
 	private GamePanel gameGridPanel;
 	private JLabel messageLabel;
 	private JButton connectButton, newGameButton, disconnectButton;
@@ -39,11 +43,16 @@ public class GomokuGUI implements Observer{
 		this.gamestate = g;
 		client.addObserver(this);
 		gamestate.addObserver(this);
-		GamePanel = new JPanel();
+		
+		frame = new JFrame("Gomoku");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();	// The background that i can use spring layout on.
 		gameGridPanel = new GamePanel(gamestate.getGameGrid());
 		connectButton = new JButton("Connect");
 		newGameButton = new JButton("New game");
 		disconnectButton = new JButton("Disconnect");
+		messageLabel = new JLabel();
 		
 		gameGridPanel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -53,13 +62,13 @@ public class GomokuGUI implements Observer{
 				int yGrid = e.getY();
 				
 				int[] xyArray = gameGridPanel.getGridPosition(xGrid, yGrid);
-				g.move(xyArray[0], xyArray[1]);
+				gamestate.move(xyArray[0], xyArray[1]);
 			}
 		});
 		
 		connectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConnectionWindow connectionWindow = new ConnectionWindow(c);
+				ConnectionWindow connectionWindow = new ConnectionWindow(client);
 			}
 		});
 		
@@ -75,6 +84,29 @@ public class GomokuGUI implements Observer{
 				g.disconnect();
 			}
 		});
+		
+		panel.add(gameGridPanel);
+		panel.add(connectButton);
+		panel.add(newGameButton);
+		panel.add(disconnectButton);
+		panel.add(messageLabel);
+		frame.setContentPane(panel);	// Connects the panel to the frame.
+		
+		SpringLayout layout = new SpringLayout();
+		panel.setLayout(layout);
+		layout.putConstraint(SpringLayout.WEST, gameGridPanel, 5, SpringLayout.EAST, panel);
+		
+		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gameGridPanel);
+		layout.putConstraint(SpringLayout.NORTH, newGameButton, 10, SpringLayout.SOUTH, gameGridPanel);
+		layout.putConstraint(SpringLayout.NORTH, disconnectButton, 10, SpringLayout.SOUTH, gameGridPanel);
+		
+		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, gameGridPanel);
+		layout.putConstraint(SpringLayout.WEST, disconnectButton, 10, SpringLayout.EAST, newGameButton);
+		
+		layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, connectButton);
+
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	
