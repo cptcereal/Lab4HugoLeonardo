@@ -25,7 +25,7 @@ public class GomokuGUI implements Observer{
 	private JButton connectButton, newGameButton, disconnectButton;
 	
 	/**
-	 * The constructor
+	 * The constructor test
 	 * 
 	 * @param g   The game state that the GUI will visualize
 	 * @param c   The client that is responsible for the communication
