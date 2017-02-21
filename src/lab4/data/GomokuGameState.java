@@ -1,16 +1,14 @@
-/*
- * Created on 2007 feb 8
- */
 package lab4.data;
+
 import java.util.Observable;
 import java.util.Observer;
-
 import lab4.client.GomokuClient;
 
 /**
- * Represents the state of a game test test
+ * Represents the state of a game.
+ * 
+ * @author hugwan-6, leopel-6
  */
-
 public class GomokuGameState extends Observable implements Observer{
 	
 
@@ -151,7 +149,7 @@ public class GomokuGameState extends Observable implements Observer{
 	 * @param x The x coordinate of the move
 	 * @param y The y coordinate of the move
 	 */
-	public void receivedMove(int x, int y){
+	public void receivedMove(int x, int y) {
 		gameGrid.move(x, y, OTHERS_TURN);
 		if(gameGrid.isWinner(OTHERS_TURN)){
 			currentState= FINISHED;
@@ -165,7 +163,9 @@ public class GomokuGameState extends Observable implements Observer{
 			notifyObservers();
 		}
 	}
-	
+	/**
+	 * Changes the game state and message when a connection is established between two players.
+	 */
 	public void update(Observable o, Object arg) {
 		
 		switch(client.getConnectionStatus()){
@@ -180,8 +180,5 @@ public class GomokuGameState extends Observable implements Observer{
 		}
 		setChanged();
 		notifyObservers();
-		
-		
 	}
-	
 }

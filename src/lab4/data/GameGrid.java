@@ -5,15 +5,16 @@ import java.util.Observable;
 /**
  *
  * Represents the 2-d game grid
+ * 
+ * @author hugwan-6, leopel-6
  */
-
 public class GameGrid extends Observable {
 	public static final int EMPTY = 0;
 	public static final int ME = 1;
 	public static final int OTHER = 2;
 	public static final int INROW = 5;	// Number of consecutive pieces in a row required to win.
 	private int[][] board;
-	private int sideLength;	// Allowed?
+	private int sideLength;
 
 	/**
 	 * Constructor
@@ -87,15 +88,16 @@ public class GameGrid extends Observable {
 	}
 	
 	/**
-	 * Check if a player has 5 in row
+	 * Check if a player has INROW(number of consecutive pieces that is requiered to win) in row
 	 * 
 	 * @param player the player to check for
-	 * @return true if player has 5 in row, false otherwise
+	 * @return true if player has INROW in row, false otherwise
 	 */
 	public boolean isWinner(int player) {
 		int playerPieces = 0;
 		int playerInRow = 0;
 		
+		// Count the player pieces
 		for (int i = 0; i < sideLength; i++) {
 			for (int j = 0; j < sideLength; j++) {
 				if (board[i][j] == player) {
@@ -105,8 +107,10 @@ public class GameGrid extends Observable {
 		}
 		
 		
-		//Checks if player has INROW Horizontally 
+		// Only check if if it's possible to win.
 		if (playerPieces >= INROW) {
+			
+			//Checks if player has INROW Horizontally 
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
 					if (board[i][j] == player) {
@@ -140,10 +144,10 @@ public class GameGrid extends Observable {
 					if (board[i][j] == player) {
 						playerInRow++;
 						int l = i;
-						for (int k = j+1; k< sideLength; k++){
+						for (int k = j + 1; k < sideLength; k++) {
 							l++;
-							if (l < sideLength){
-								if (board[l][k]== player){
+							if (l < sideLength) {
+								if (board[l][k]== player) {
 									playerInRow++;
 									if (playerInRow == INROW) {
 										return true;
@@ -167,8 +171,7 @@ public class GameGrid extends Observable {
 						int l = i;
 						for(int k = j-1; k>=0; k--){
 							l++;
-							if(l>=0){
-								
+							if(l >= 0){
 								if(board[l][k]== player){
 									playerInRow++;
 									if (playerInRow == INROW) {
@@ -180,7 +183,6 @@ public class GameGrid extends Observable {
 								}
 							}
 						}
-					
 					} else {
 						playerInRow = 0;
 					}

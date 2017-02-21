@@ -16,10 +16,11 @@ import javax.swing.SpringLayout;
 import lab4.client.GomokuClient;
 import lab4.data.GomokuGameState;
 
-/*
+/**
  * The GUI class
+ * 
+ * @author hugwan-6, leopel-6
  */
-
 public class GomokuGUI implements Observer{
 
 	private GomokuClient client;
@@ -30,7 +31,7 @@ public class GomokuGUI implements Observer{
 	private JButton connectButton, newGameButton, disconnectButton;
 	
 	/**
-	 * The constructor test
+	 * The constructor
 	 * 
 	 * @param g   The game state that the GUI will visualize
 	 * @param c   The client that is responsible for the communication
