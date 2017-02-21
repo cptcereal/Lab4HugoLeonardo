@@ -81,6 +81,10 @@ public class GomokuGameState extends Observable implements Observer{
 					currentState = FINISHED;
 					setChanged();
 					notifyObservers();
+				}else{
+					currentState = OTHERS_TURN;
+					setChanged();
+					notifyObservers();
 				}
 			} else {	// If the move can't be made because of not empty.
 				message = "The move can't me made.";

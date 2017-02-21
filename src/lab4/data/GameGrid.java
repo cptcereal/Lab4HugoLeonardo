@@ -150,15 +150,15 @@ public class GameGrid extends Observable {
 						int l = i;
 						for(int k = j+1; k< sideLength; k++){
 							l++;
-							if(l<= sideLength){
-								playerInRow++;
+							if(l< sideLength){
+								
 								if(board[l][k]== player){
+									playerInRow++;
 									if (playerInRow == INROW) {
 										return true;
 									}	
 								}else{
 									playerInRow=0;
-									break;
 								}
 							}
 						}
@@ -182,8 +182,9 @@ public class GameGrid extends Observable {
 						for(int k = j-1; k>=0; k--){
 							l++;
 							if(l>=0){
-								playerInRow++;
+								
 								if(board[l][k]== player){
+									playerInRow++;
 									if (playerInRow == INROW) {
 										return true;
 									}	
