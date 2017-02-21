@@ -16,14 +16,14 @@ public class GomokuMain {
 				port = tempPort;
 			}
 		}
-		GomokuClient client = new GomokuClient(4500);
+		GomokuClient client = new GomokuClient(7600);
 		GomokuGameState gameState = new GomokuGameState(client);
 		GomokuGUI GUI = new GomokuGUI(gameState, client);
 		
 		
 		
-		GomokuClient client2 = new GomokuClient(4501);
+		/*GomokuClient client2 = new GomokuClient(4501);
 		GomokuGameState gameState2 = new GomokuGameState(client2);
-		GomokuGUI GUI2 = new GomokuGUI(gameState2, client2);
+		GomokuGUI GUI2 = new GomokuGUI(gameState2, client2);*/
 	}
 }
