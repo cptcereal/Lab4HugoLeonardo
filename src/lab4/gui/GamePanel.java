@@ -51,20 +51,20 @@ public class GamePanel extends JPanel implements Observer{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for(int i = 0; i < grid.getSize(); i++) {
-			for(int j=0; j< grid.getSize(); j++) {
+		for (int i = 0; i < grid.getSize(); i++) {
+			for (int j = 0; j < grid.getSize(); j++) {
 				g.setColor(Color.white);
 				g.fillRect(j*UNIT_SIZE, i*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
 				g.setColor(Color.black);
 				g.drawRect(j*UNIT_SIZE, i*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
 				
-				if(grid.getLocation(j,i) == GameGrid.ME) {
+				if (grid.getLocation(j,i) == GameGrid.ME) {
 					g.setColor(Color.black);
-					g.fillOval(j*UNIT_SIZE, i*UNIT_SIZE, (UNIT_SIZE), (UNIT_SIZE ));
-				}else if (grid.getLocation(j,i) == GameGrid.OTHER) {
+					g.fillOval(j*UNIT_SIZE, i*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
+				} else if (grid.getLocation(j,i) == GameGrid.OTHER) {
 					g.setColor(Color.BLUE);
 					
-					g.fillOval(j*UNIT_SIZE, i*UNIT_SIZE, (UNIT_SIZE), (UNIT_SIZE));
+					g.fillOval(j*UNIT_SIZE, i*UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
 				}
 			}
 		}
