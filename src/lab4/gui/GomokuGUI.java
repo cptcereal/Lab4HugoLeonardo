@@ -11,7 +11,6 @@ import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import lab4.client.GomokuClient;
@@ -46,7 +45,6 @@ public class GomokuGUI implements Observer{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(375, 450));
 		
-		JPanel panel = new JPanel();	// The background that i can use spring layout on.
 		gameGridPanel = new GamePanel(gamestate.getGameGrid());
 		connectButton = new JButton("Connect");
 		newGameButton = new JButton("New game");
@@ -84,15 +82,14 @@ public class GomokuGUI implements Observer{
 			}
 		});
 		
-		panel.add(gameGridPanel);
-		panel.add(connectButton);
-		panel.add(newGameButton);
-		panel.add(disconnectButton);
-		panel.add(messageLabel);
-		frame.setContentPane(panel);	// Connects the panel to the frame.
-		
+		frame.add(gameGridPanel);
+		frame.add(connectButton);
+		frame.add(newGameButton);
+		frame.add(disconnectButton);
+		frame.add(messageLabel);
+				
 		SpringLayout layout = new SpringLayout();
-		panel.setLayout(layout);
+		frame.setLayout(layout);
 		
 		// Constrains to fix the layout of the game.
 		layout.putConstraint(SpringLayout.WEST, gameGridPanel, 5, SpringLayout.WEST, frame);
