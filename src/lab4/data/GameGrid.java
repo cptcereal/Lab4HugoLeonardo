@@ -119,11 +119,8 @@ public class GameGrid extends Observable {
 					}
 				}
 			}
-		}
-		
-		
-		//Checks if player has INROW Vertically
-		if (playerPieces >= INROW) {
+
+			//Checks if player has INROW Vertically
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
 					if (board[j][i] == player) {
@@ -136,13 +133,8 @@ public class GameGrid extends Observable {
 					}
 				}
 			}
-		}
 		
-		
-		
-		
-		//Checks if player has INROW Diagonally to the right
-		if (playerPieces >= INROW) {
+			//Checks if player has INROW Diagonally to the right
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
 					if (board[i][j] == player) {
@@ -166,10 +158,8 @@ public class GameGrid extends Observable {
 					}
 				}
 			}
-		}
 		
-		//Checks if player has INROW Diagonally to the left
-		if (playerPieces >= INROW) {
+			//Checks if player has INROW Diagonally to the left
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
 					if (board[i][j] == player) {

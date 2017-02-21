@@ -6,7 +6,7 @@ import lab4.gui.*;
 
 
 public class GomokuMain {
-	private static int port = 7600;
+	private static int port = 4500;
 
 	public static void main(String[] args) {
 		if (args.length == 1) {
@@ -22,8 +22,8 @@ public class GomokuMain {
 		
 		
 		
-		/*GomokuClient client2 = new GomokuClient(4501);
+		GomokuClient client2 = new GomokuClient(4501);
 		GomokuGameState gameState2 = new GomokuGameState(client2);
-		GomokuGUI GUI2 = new GomokuGUI(gameState2, client2);*/
+		GomokuGUI GUI2 = new GomokuGUI(gameState2, client2);
 	}
 }
