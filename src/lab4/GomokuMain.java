@@ -4,7 +4,12 @@ import lab4.client.*;
 import lab4.data.GomokuGameState;
 import lab4.gui.*;
 
-
+/**
+ * Creates an instance of the game Gomoku that can be played over the internet.
+ * 
+ * @author hugwan-6, leopel-6
+ *
+ */
 public class GomokuMain {
 	private static int port = 4500;
 
@@ -22,8 +27,8 @@ public class GomokuMain {
 		
 		
 		
-		GomokuClient client2 = new GomokuClient(4501);
-		GomokuGameState gameState2 = new GomokuGameState(client2);
-		GomokuGUI GUI2 = new GomokuGUI(gameState2, client2);
+//		GomokuClient client2 = new GomokuClient(4501);
+//		GomokuGameState gameState2 = new GomokuGameState(client2);
+//		GomokuGUI GUI2 = new GomokuGUI(gameState2, client2);
 	}
 }
