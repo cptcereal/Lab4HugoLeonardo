@@ -179,7 +179,6 @@ public class GameGrid extends Observable {
 									}	
 								}else{
 									playerInRow=0;
-									break;
 								}
 							}
 						}
