@@ -15,7 +15,7 @@ public class GomokuGameState extends Observable implements Observer{
 	
 
    // Game variables
-	private final int DEFAULT_SIZE = 15;
+	private final int DEFAULT_SIZE = 20;
 	private GameGrid gameGrid;
 	
     //Possible game states
@@ -41,11 +41,6 @@ public class GomokuGameState extends Observable implements Observer{
 		gc.setGameState(this);
 		currentState = NOT_STARTED;
 		gameGrid = new GameGrid(DEFAULT_SIZE);
-
-		//		message = "Welcome to Gomoku!";
-//		client.sendNewGameMessage();
-//		setChanged();
-//		notifyObservers();
 	}
 	
 
