@@ -51,7 +51,7 @@ public class GomokuGUI implements Observer{
 		connectButton = new JButton("Connect");
 		newGameButton = new JButton("New game");
 		disconnectButton = new JButton("Disconnect");
-		messageLabel = new JLabel();
+		messageLabel = new JLabel("Welcome to Gomoku!");
 		
 		gameGridPanel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
