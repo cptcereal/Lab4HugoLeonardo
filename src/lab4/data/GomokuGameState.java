@@ -77,12 +77,15 @@ public class GomokuGameState extends Observable implements Observer{
 		if(currentState == MY_TURN){
 			if(gameGrid.move(x,y,MY_TURN)) {
 				client.sendMoveMessage(x, y);
+				currentState = OTHERS_TURN;
 				if(gameGrid.isWinner(MY_TURN)) {
 					currentState = FINISHED;
+					message = "Congratulation you have won";
 					setChanged();
 					notifyObservers();
 				}else{
 					currentState = OTHERS_TURN;
+					message = "Other player's turn";
 					setChanged();
 					notifyObservers();
 				}
@@ -158,6 +161,7 @@ public class GomokuGameState extends Observable implements Observer{
 			notifyObservers();
 		}else{
 			message = " Your turn";
+			currentState = MY_TURN;
 			setChanged();
 			notifyObservers();
 		}
