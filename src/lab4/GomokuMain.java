@@ -12,7 +12,11 @@ import lab4.gui.*;
  */
 public class GomokuMain {
 	private static int port = 4500;
-
+	
+	/**
+	 * 
+	 * @param args	The port number the client connects to.
+	 */
 	public static void main(String[] args) {
 		if (args.length == 1) {
 			int tempPort = Integer.parseInt(args[0]);	// Problem if the argument is not a number.
