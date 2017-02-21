@@ -13,7 +13,7 @@ public class GomokuGameState extends Observable implements Observer{
 	
 
    // Game variables
-	private final int DEFAULT_SIZE = 20;
+	private final int DEFAULT_SIZE = 15;
 	private GameGrid gameGrid;
 	
     //Possible game states

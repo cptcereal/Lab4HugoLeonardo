@@ -17,7 +17,7 @@ import lab4.data.GameGrid;
  */
 public class GamePanel extends JPanel implements Observer{
 
-	private final int UNIT_SIZE = 30;
+	private final int UNIT_SIZE = 20;
 	private GameGrid grid;
 	
 	/**
