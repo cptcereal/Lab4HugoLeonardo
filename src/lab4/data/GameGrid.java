@@ -34,7 +34,7 @@ public class GameGrid extends Observable {
 	}
 	
 	/**
-	 * Reads a location of the grid
+	 * Reads a location of the grid test
 	 * 
 	 * @param x The x coordinate
 	 * @param y The y coordinate
