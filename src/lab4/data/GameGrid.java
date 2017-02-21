@@ -12,7 +12,7 @@ public class GameGrid extends Observable {
 	public static final int EMPTY = 0;
 	public static final int ME = 1;
 	public static final int OTHER = 2;
-	public static final int INROW = 5;	// Number of consecutive pieces in a row required to win.
+	public static final int INROW = 6;	// Number of consecutive pieces in a row required to win.
 	private int[][] board;
 	private int sideLength;
 
