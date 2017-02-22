@@ -163,6 +163,7 @@ public class GomokuGameState extends Observable implements Observer{
 			notifyObservers();
 		}
 	}
+	
 	/**
 	 * Changes the game state and message when a connection is established between two players.
 	 */

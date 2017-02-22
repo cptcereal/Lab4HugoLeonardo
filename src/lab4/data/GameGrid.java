@@ -122,12 +122,13 @@ public class GameGrid extends Observable {
 						playerInRow = 0;
 					}
 				}
+				playerInRow = 0;
 			}
-
+			
 			//Checks if player has INROW Vertically
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-					if (board[j][i] == player) {
+					if (board[j][i] == player) {	// Dont enter if the 
 						playerInRow++;
 						if (playerInRow == INROW) {
 							return true;
@@ -136,43 +137,17 @@ public class GameGrid extends Observable {
 						playerInRow = 0;
 					}
 				}
+				playerInRow = 0;
 			}
-		
+			
 			//Checks if player has INROW Diagonally to the right
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
 					if (board[i][j] == player) {
 						playerInRow++;
-						int l = i;
-						for (int k = j + 1; k < sideLength; k++) {
-							l++;
-							if (l < sideLength) {
-								if (board[l][k]== player) {
-									playerInRow++;
-									if (playerInRow == INROW) {
-										return true;
-									}	
-								} else {
-									playerInRow=0;
-								}
-							}
-						}
-					} else {
-						playerInRow = 0;
-					}
-				}
-			}
-		
-			//Checks if player has INROW Diagonally to the left
-			for (int i = 0; i < sideLength; i++ ) {
-				for (int j = 0; j < sideLength; j++) {
-					if (board[i][j] == player) {
-						playerInRow++;
-						int l = i;
-						for(int k = j-1; k>=0; k--){
-							l++;
-							if(l >= 0){
-								if(board[l][k]== player){
+						if (i + INROW - 1 < sideLength && j + INROW - 1  < sideLength) {
+							for(int k = 1; k < INROW; k++){								
+								if(board[i+k][j+k] == player) {
 									playerInRow++;
 									if (playerInRow == INROW) {
 										return true;
@@ -181,6 +156,33 @@ public class GameGrid extends Observable {
 									playerInRow=0;
 								}
 							}
+						} else {
+							playerInRow = 0;
+						}
+					} else {
+						playerInRow = 0;
+					}
+				}
+			}
+			
+			//Checks if player has INROW Diagonally to the left
+			for (int i = 0; i < sideLength; i++ ) {
+				for (int j = 0; j < sideLength; j++) {
+					if (board[i][j] == player) {
+						playerInRow++;
+						if (i + INROW - 1 < sideLength && j - INROW + 1 >= 0) {
+							for(int k = 1; k < INROW; k++){								
+								if(board[i+k][j-k] == player) {
+									playerInRow++;
+									if (playerInRow == INROW) {
+										return true;
+									}	
+								}else{
+									playerInRow=0;
+								}
+							}
+						} else {
+							playerInRow = 0;
 						}
 					} else {
 						playerInRow = 0;
