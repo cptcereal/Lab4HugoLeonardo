@@ -77,14 +77,14 @@ public class GomokuGUI implements Observer{
 		
 		newGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				g.newGame();
+				gamestate.newGame();
 				
 			}
 		});
 		
 		disconnectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				g.disconnect();
+				gamestate.disconnect();
 			}
 		});
 		
@@ -103,6 +103,7 @@ public class GomokuGUI implements Observer{
 		messageLayout.setLayout(new BoxLayout(messageLayout, BoxLayout.X_AXIS));
 		messageLayout.add(messageLabel);
 		
+		// Container
 		contentPane = frame.getContentPane();
 		
 		contentPane.add(gridLayout, BorderLayout.PAGE_START);

@@ -10,7 +10,7 @@ import lab4.gui.*;
  * @author hugwan-6, leopel-6
  *
  */
-public class GomokuMain {
+public class GomokuMain2 {
 	private static int port = 4500;
 	
 	/**
@@ -30,5 +30,9 @@ public class GomokuMain {
 		GomokuClient client = new GomokuClient(port);
 		GomokuGameState gameState = new GomokuGameState(client);
 		GomokuGUI GUI = new GomokuGUI(gameState, client);
+		
+		GomokuClient client2 = new GomokuClient(4502);
+		GomokuGameState gameState2 = new GomokuGameState(client2);
+		GomokuGUI GUI2 = new GomokuGUI(gameState2, client2);
 	}
 }

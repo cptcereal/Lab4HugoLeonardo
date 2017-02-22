@@ -88,10 +88,10 @@ public class GameGrid extends Observable {
 	}
 	
 	/**
-	 * Check if a player has INROW(number of consecutive pieces that is requiered to win) in row
+	 * Check if a player has the required number of consecutive pieces in a row to win
 	 * 
 	 * @param player the player to check for
-	 * @return true if player has INROW in row, false otherwise
+	 * @return true if player has won , false otherwise
 	 */
 	public boolean isWinner(int player) {
 		int playerPieces = 0;
@@ -128,7 +128,7 @@ public class GameGrid extends Observable {
 			//Checks if player has INROW Vertically
 			for (int i = 0; i < sideLength; i++ ) {
 				for (int j = 0; j < sideLength; j++) {
-					if (board[j][i] == player) {	// Dont enter if the 
+					if (board[j][i] == player) {
 						playerInRow++;
 						if (playerInRow == INROW) {
 							return true;
