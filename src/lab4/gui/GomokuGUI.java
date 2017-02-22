@@ -1,29 +1,22 @@
 package lab4.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-//import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.BoxLayout;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-//import javax.swing.SpringLayout;
-
 import lab4.client.GomokuClient;
 import lab4.data.GomokuGameState;
 
 /**
  * The GUI class
  * 
- * @author hugwan-6, leopel-6
+ * @author hugwan-6, leopel-6 
  */
 public class GomokuGUI implements Observer{
 
@@ -32,8 +25,8 @@ public class GomokuGUI implements Observer{
 	private JFrame frame;
 	private GamePanel gameGridPanel;
 	private JLabel messageLabel;
-	private JPanel gridLayout,buttonLayout,messageLayout;
-	private Container contentPane;
+//	private JPanel gridLayout,buttonLayout,messageLayout;
+	private Box contentBox, buttonBox, messageBox;
 	private JButton connectButton, newGameButton, disconnectButton;
 	
 	/**
@@ -88,52 +81,19 @@ public class GomokuGUI implements Observer{
 			}
 		});
 		
-		// Box layout
-		gridLayout = new JPanel();
-		gridLayout.setLayout(new BoxLayout(gridLayout, BoxLayout.X_AXIS));
-		gridLayout.add(gameGridPanel);
+		contentBox = Box.createVerticalBox();
+		buttonBox = Box.createHorizontalBox();
+		messageBox = Box.createHorizontalBox();
+
+		buttonBox.add(connectButton);
+		buttonBox.add(newGameButton);
+		buttonBox.add(disconnectButton);
+		messageBox.add(messageLabel);
+		contentBox.add(gameGridPanel);
+		contentBox.add(buttonBox);
+		contentBox.add(messageBox);
 		
-		buttonLayout = new JPanel();
-		buttonLayout.setLayout(new BoxLayout(buttonLayout, BoxLayout.X_AXIS));
-		buttonLayout.add(connectButton);
-		buttonLayout.add(newGameButton);
-		buttonLayout.add(disconnectButton);
-		
-		messageLayout = new JPanel();
-		messageLayout.setLayout(new BoxLayout(messageLayout, BoxLayout.X_AXIS));
-		messageLayout.add(messageLabel);
-		
-		// Container
-		contentPane = frame.getContentPane();
-		
-		contentPane.add(gridLayout, BorderLayout.PAGE_START);
-		contentPane.add(buttonLayout,BorderLayout.CENTER);
-		contentPane.add(messageLayout,BorderLayout.PAGE_END);
-		
-		// Spring layout
-//		frame.add(gameGridPanel);
-//		frame.add(connectButton);
-//		frame.add(newGameButton);
-//		frame.add(disconnectButton);
-//		frame.add(messageLabel);
-//		SpringLayout layout = new SpringLayout();
-//		frame.setLayout(layout);
-//		// Constrains to fix the layout of the game.
-//		layout.putConstraint(SpringLayout.WEST, gameGridPanel, 5, SpringLayout.WEST, frame);
-//		layout.putConstraint(SpringLayout.NORTH, gameGridPanel, 5, SpringLayout.NORTH, frame);
-//		
-//		layout.putConstraint(SpringLayout.NORTH, connectButton, 10, SpringLayout.SOUTH, gameGridPanel);
-//		layout.putConstraint(SpringLayout.WEST, connectButton, 5, SpringLayout.WEST, frame);
-//		
-//		layout.putConstraint(SpringLayout.NORTH, newGameButton, 10, SpringLayout.SOUTH, gameGridPanel);
-//		layout.putConstraint(SpringLayout.WEST, newGameButton, 10, SpringLayout.EAST, connectButton);
-//		
-//		layout.putConstraint(SpringLayout.NORTH, disconnectButton, 10, SpringLayout.SOUTH, gameGridPanel);
-//		layout.putConstraint(SpringLayout.WEST, disconnectButton, 10, SpringLayout.EAST, newGameButton);
-//	
-//		layout.putConstraint(SpringLayout.WEST, messageLabel, 5, SpringLayout.WEST, frame);
-//		layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, connectButton);
-		
+		frame.add(contentBox);
 		frame.pack();
 		frame.setVisible(true);
 	}

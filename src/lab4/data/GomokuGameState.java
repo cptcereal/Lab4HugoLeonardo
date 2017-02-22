@@ -10,24 +10,20 @@ import lab4.client.GomokuClient;
  * @author hugwan-6, leopel-6
  */
 public class GomokuGameState extends Observable implements Observer{
-	
 
    // Game variables
 	private final int DEFAULT_SIZE = 15;
 	private GameGrid gameGrid;
-	
+	private GomokuClient client;
+	private String message;	
+
     //Possible game states
 	private final int NOT_STARTED = 0;
 	private int currentState;
-	
-	private GomokuClient client;
-	
-	private String message;
-	
 	private final int MY_TURN = 1;
 	private final int OTHERS_TURN = 2;
 	private final int FINISHED = 3; 
-	
+
 	/**
 	 * The constructor
 	 * 
@@ -41,7 +37,6 @@ public class GomokuGameState extends Observable implements Observer{
 		gameGrid = new GameGrid(DEFAULT_SIZE);
 	}
 	
-
 	/**
 	 * Returns the message string
 	 * 

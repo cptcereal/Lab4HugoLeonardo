@@ -5,9 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.JPanel;
-
 import lab4.data.GameGrid;
 
 /**
