@@ -2,7 +2,7 @@ package lab4.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.Dimension;
+//import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SpringLayout;
+//import javax.swing.SpringLayout;
 
 import lab4.client.GomokuClient;
 import lab4.data.GomokuGameState;
@@ -32,6 +32,8 @@ public class GomokuGUI implements Observer{
 	private JFrame frame;
 	private GamePanel gameGridPanel;
 	private JLabel messageLabel;
+	private JPanel gridLayout,buttonLayout,messageLayout;
+	private Container contentPane;
 	private JButton connectButton, newGameButton, disconnectButton;
 	
 	/**
@@ -87,21 +89,21 @@ public class GomokuGUI implements Observer{
 		});
 		
 		// Box layout
-		JPanel gridLayout = new JPanel();
+		gridLayout = new JPanel();
 		gridLayout.setLayout(new BoxLayout(gridLayout, BoxLayout.X_AXIS));
 		gridLayout.add(gameGridPanel);
 		
-		JPanel buttonLayout = new JPanel();
+		buttonLayout = new JPanel();
 		buttonLayout.setLayout(new BoxLayout(buttonLayout, BoxLayout.X_AXIS));
 		buttonLayout.add(connectButton);
 		buttonLayout.add(newGameButton);
 		buttonLayout.add(disconnectButton);
 		
-		JPanel messageLayout = new JPanel();
+		messageLayout = new JPanel();
 		messageLayout.setLayout(new BoxLayout(messageLayout, BoxLayout.X_AXIS));
 		messageLayout.add(messageLabel);
 		
-		Container contentPane = frame.getContentPane();
+		contentPane = frame.getContentPane();
 		
 		contentPane.add(gridLayout, BorderLayout.PAGE_START);
 		contentPane.add(buttonLayout,BorderLayout.CENTER);
