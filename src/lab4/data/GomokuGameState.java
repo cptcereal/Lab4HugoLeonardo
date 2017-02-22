@@ -58,8 +58,8 @@ public class GomokuGameState extends Observable implements Observer{
 	/**
 	 * This player makes a move at a specified location
 	 * 
-	 * @param x the x coordinate
-	 * @param y the y coordinate
+	 * @param x the x coordinate to move to
+	 * @param y the y coordinate to move to
 	 */
 	public void move(int x, int y) {
 		if(currentState == MY_TURN){

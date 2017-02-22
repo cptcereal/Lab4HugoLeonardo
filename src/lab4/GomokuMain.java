@@ -16,7 +16,7 @@ public class GomokuMain {
 	/**
 	 * Creates all the dynamic objects that makes up the game.
 	 * 
-	 * @param args	The port number
+	 * @param args	The port number for the client
 	 */
 	public static void main(String[] args) {
 		if (args.length == 1) {

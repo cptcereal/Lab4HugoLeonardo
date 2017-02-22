@@ -37,8 +37,8 @@ public class GameGrid extends Observable {
 	/**
 	 * Reads a location of the grid 
 	 * 
-	 * @param x The x coordinate
-	 * @param y The y coordinate
+	 * @param x The index x in the 2-d array
+	 * @param y The index y in the 2-d array
 	 * @return the value of the specified location
 	 */
 	public int getLocation(int x, int y) {
